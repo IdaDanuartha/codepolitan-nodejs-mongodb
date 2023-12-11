@@ -59,6 +59,14 @@ const productSchema =new mongoose.Schema({
   },
 })
 
+productSchema.pre('updateMany', async function() {
+  console.log('persiapan update data')
+})
+
+productSchema.post('updateMany', async function() {
+  console.log('data berhasil disimpan')
+})
+
 productSchema.methods.outStock = function() {
   this.stock = 0
   return this.save()
